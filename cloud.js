@@ -11,14 +11,14 @@ AV.Cloud.define('hello', function (request, response) {
 AV.Cloud.define('baiduDistanceCoors', function (request, response) {
     var from = request.params.from
     var to = request.params.to
-    var commuteType = request.params.commute_type
+    var transportMode = request.params.transport_mode
 
     var fromStr = from[0] + ',' + from[1]
     var toStr = to[0] + ',' + to [1]
 
 
     var urlTemplate = "http://api.map.baidu.com/direction/v1" +
-        "?mode=$commute_type$" +
+        "?mode=$transport_mode$" +
         "&origin=$origin$" +
         "&destination=$destination$" +
         "&origin_region=北京" +
@@ -26,7 +26,7 @@ AV.Cloud.define('baiduDistanceCoors', function (request, response) {
         "&output=json" +
         "&ak=o0RuzQRVNo1YuIorz50uWVLs6DXVSo7X";
 
-    urlTemplate = urlTemplate.replace('$commute_type$', commuteType)
+    urlTemplate = urlTemplate.replace('$transport_mode$', transportMode)
     urlTemplate = urlTemplate.replace('$origin$', fromStr)
     urlTemplate = urlTemplate.replace('$destination$', toStr)
     urlTemplate = encodeURI(urlTemplate)
@@ -57,10 +57,10 @@ AV.Cloud.define('baiduDistanceCoors', function (request, response) {
 AV.Cloud.define('baiduDistanceAddress', function (request, response) {
     var from = request.params.from
     var to = request.params.to
-    var commuteType = request.params.commute_type
+    var transportMode = request.params.transport_mode
 
     var urlTemplate = "http://api.map.baidu.com/direction/v1" +
-        "?mode=$commute_type$" +
+        "?mode=$transport_mode$" +
         "&origin=$origin$" +
         "&destination=$destination$" +
         "&origin_region=北京" +
@@ -68,7 +68,7 @@ AV.Cloud.define('baiduDistanceAddress', function (request, response) {
         "&output=json" +
         "&ak=o0RuzQRVNo1YuIorz50uWVLs6DXVSo7X";
 
-    urlTemplate = urlTemplate.replace('$commute_type$', commuteType)
+    urlTemplate = urlTemplate.replace('$commute_type$', transportMode)
     urlTemplate = urlTemplate.replace('$origin$', from)
     urlTemplate = urlTemplate.replace('$destination$', to)
     urlTemplate = encodeURI(urlTemplate)
