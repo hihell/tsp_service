@@ -51,7 +51,7 @@ AV.Cloud.define('baiduDistanceCoors', function (request, response) {
     })
 })
 
-AV.Cloud.define('baiduDistanceString', function (request, response) {
+AV.Cloud.define('baiduDistanceAddress', function (request, response) {
     var from = request.params.from
     var to = request.params.to
 
