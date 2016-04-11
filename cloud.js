@@ -12,6 +12,8 @@ AV.Cloud.define('baiduDistanceCoors', function (request, response) {
     var from = request.params.from
     var to = request.params.to
     var transportMode = request.params.transport_mode
+    var fromRegion = request.param.from_region
+    var toRegion = request.param.to_region
 
     var fromStr = from[0] + ',' + from[1]
     var toStr = to[0] + ',' + to [1]
@@ -21,14 +23,17 @@ AV.Cloud.define('baiduDistanceCoors', function (request, response) {
         "?mode=$transport_mode$" +
         "&origin=$origin$" +
         "&destination=$destination$" +
-        "&origin_region=北京" +
-        "&destination_region=北京" +
+        "&origin_region=$from_region$" +
+        "&destination_region=$to_region$" +
         "&output=json" +
         "&ak=o0RuzQRVNo1YuIorz50uWVLs6DXVSo7X";
 
     urlTemplate = urlTemplate.replace('$transport_mode$', transportMode)
     urlTemplate = urlTemplate.replace('$origin$', fromStr)
     urlTemplate = urlTemplate.replace('$destination$', toStr)
+    urlTemplate = urlTemplate.replace('$from_region$', fromRegion)
+    urlTemplate = urlTemplate.replace('$to_region$', toRegion)
+
     urlTemplate = encodeURI(urlTemplate)
 
     console.log('urlTemplate:', urlTemplate)
@@ -58,19 +63,24 @@ AV.Cloud.define('baiduDistanceAddress', function (request, response) {
     var from = request.params.from
     var to = request.params.to
     var transportMode = request.params.transport_mode
+    var fromRegion = request.params.from_region
+    var toRegion = request.params.to_region
 
     var urlTemplate = "http://api.map.baidu.com/direction/v1" +
         "?mode=$transport_mode$" +
         "&origin=$origin$" +
         "&destination=$destination$" +
-        "&origin_region=北京" +
-        "&destination_region=北京" +
+        "&origin_region=$from_region$" +
+        "&destination_region=$to_region$" +
         "&output=json" +
         "&ak=o0RuzQRVNo1YuIorz50uWVLs6DXVSo7X";
 
-    urlTemplate = urlTemplate.replace('$commute_type$', transportMode)
+    urlTemplate = urlTemplate.replace('$transport_mode$', transportMode)
     urlTemplate = urlTemplate.replace('$origin$', from)
     urlTemplate = urlTemplate.replace('$destination$', to)
+    urlTemplate = urlTemplate.replace('$from_region$', fromRegion)
+    urlTemplate = urlTemplate.replace('$to_region$', toRegion)
+
     urlTemplate = encodeURI(urlTemplate)
 
     console.log('urlTemplate:', urlTemplate)
