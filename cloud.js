@@ -12,8 +12,8 @@ AV.Cloud.define('baiduDistanceCoors', function (request, response) {
     var from = request.params.from
     var to = request.params.to
     var transportMode = request.params.transport_mode
-    var fromRegion = request.param.from_region
-    var toRegion = request.param.to_region
+    var fromRegion = request.params.from_region
+    var toRegion = request.params.to_region
 
     var fromStr = from[0] + ',' + from[1]
     var toStr = to[0] + ',' + to [1]
